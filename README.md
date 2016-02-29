@@ -40,4 +40,4 @@ Hmmdeutschland GmbH for investing worktime into the project
 
 Maciej Swiderski for his informative blog http://mswiderski.blogspot.de
 
-Alexander Knyn for being my php integration sparring partner
+Alexander Knyn https://de.linkedin.com/in/alexander-knyn-26472095, for being my php integration sparring partner
