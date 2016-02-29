@@ -21,11 +21,15 @@ Tested on JavaEE7 with Wildfly 8.2.1 using Kie Server 6.4.0.Beta2
 
 Features
 
-Very compact binairy message payloads resulting in high speed messaging
+Very compact binary message payloads with low cost (de)serialization resulting in high speed messaging
+Internal Kie Server use of Java Objects like BigDecimal or Date for Thrift supported languages 
 
 
 
 Acknowledgments
 
-Hmmdeutschland GmbH for investing work time into the project
+Hmmdeutschland GmbH for investing worktime into the project
+
 Maciej Swiderski for his informative blog http://mswiderski.blogspot.de
+
+Alexander Knyn for being my php integration sparring partner
