@@ -26,7 +26,7 @@ Tested on JavaEE7 with Wildfly 8.2.1 using Kie Server 6.4.0.Beta2
 
 Features
 
-Very compact binary message payloads with low overhead (de)serialization resulting in high speed messaging with language bindings that feel natural
+Very compact binary message payloads with low (de)serialization overhead, resulting in high speed messaging with language bindings that feel natural
 
 Object oriented, no schemas or data bindings, less boilerplate code
 
