@@ -1,0 +1,2 @@
+org.kie.server.remote.rest.thrift.common.KieServerRestThriftApplicationComponentsService
+org.kie.server.remote.rest.thrift.drools.DroolsRestThriftApplicationComponentsService

@@ -1,0 +1,2 @@
+org.kie.server.remote.rest.extension.ThriftMessageReader
+org.kie.server.remote.rest.extension.ThriftMessageWriter

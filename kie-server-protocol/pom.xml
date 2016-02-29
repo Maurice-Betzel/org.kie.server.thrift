@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>kie-server-reactor</artifactId>
+        <groupId>org.kie.server</groupId>
+        <version>6.4.0.0.Beta2</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kie-server-protocol</artifactId>
+    <packaging>bundle</packaging>
+    <name>KIE :: Execution Server :: Thrift :: Protocol</name>
+    <description>Root Thrift Protocol used by KIE Server Thrift extension</description>
+    <url>hmmdeutschland.de</url>
+    <inceptionYear>January 2016</inceptionYear>
+    <organization>
+        <name>hmmdeutschland</name>
+        <url>hmmdeutschland.de</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Maurice Betzel</name>
+            <email>betzel@x3.net</email>
+            <organization>hmmdeutschland</organization>
+            <roles>
+                <role>Developer</role>
+                <role>Architect</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.libthrift</artifactId>
+            <version>${libthrift-bundle.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.thrift</groupId>
+                <artifactId>thrift-maven-plugin</artifactId>
+                <version>${thrift-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-java-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <workingDirectory>${project.build.directory}/working-directory</workingDirectory>
+                            <thriftSourceRoot>src/main/resources/idl</thriftSourceRoot>
+                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                            <generator>java:beans:fullcamel</generator>
+                        </configuration>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-php-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <workingDirectory>${project.build.directory}/working-directory</workingDirectory>
+                            <thriftSourceRoot>src/main/resources/idl</thriftSourceRoot>
+                            <outputDirectory>${project.build.directory}/generated-php-sources</outputDirectory>
+                            <generator>php:oop</generator>
+                        </configuration>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven-bundle-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>net.x3.pdf.protocol</Export-Package>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                    </instructions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>bundle-install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
