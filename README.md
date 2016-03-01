@@ -23,7 +23,7 @@ under the License.
  
 Introduction
 
-The Kie Server Apache Trift extension uses the extension mechanism provided by the Kie Server version 6.4.0 to add support for the Apache Trift TCompactProtocol for the ReST transport, therefore only Thrift (de)serialization is used. Thrift is a lightweight, language-independent software stack with an associated code generation mechanism for RPC. Thrift provides clean abstractions for data transport, data serialization, and application level processing. The code generation system takes a simple definition language as its input and generates code across programming languages. Thrift is specifically designed to support non-atomic version changes across client and server code.
+The Kie Server Apache Thrift extension uses the extension mechanism provided by the Kie Server version 6.4.0 to add support for the Apache Thrift TCompactProtocol for the ReST transport, therefore only Thrift (de)serialization is used. Thrift is a lightweight, language-independent software stack with an associated code generation mechanism for RPC. Thrift provides clean abstractions for data transport, data serialization, and application level processing. The code generation system takes a simple definition language as its input and generates code across programming languages. Thrift is specifically designed to support non-atomic version changes across client and server code.
 
 
 Requirements
