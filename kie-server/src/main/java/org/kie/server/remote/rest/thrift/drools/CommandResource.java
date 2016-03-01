@@ -72,6 +72,7 @@ public class CommandResource {
 
         KieContainerInstanceImpl kci = registry.getContainer(containerId);
         if(kci == null) {
+            logger.warn("No container deployed with id '{}'", containerId);
             return new KieServicesResponse().setResponse(Response.kieServicesException((new KieServicesException("UnknownContainerException","Unknown container: " + containerId))));
         }
         ClassLoader kieContainerClassLoader = kci.getKieContainer().getClassLoader();
@@ -161,7 +162,7 @@ public class CommandResource {
         } catch (Exception e) {
             // in case marshalling failed return the call container response to keep backward compatibility
             String response = "Execution failed with error : " + e.getMessage();
-            logger.debug("Returning Failure response with content '{}'", response);
+            logger.warn("Returning Failure response with content '{}'", response);
             KieServicesResponse kieServicesResponse = new KieServicesResponse();
             kieServicesResponse.setResponse(Response.kieServicesException(new KieServicesException(e.getClass().getCanonicalName(), e.getMessage())));
             return kieServicesResponse;

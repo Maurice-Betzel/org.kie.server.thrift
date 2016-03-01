@@ -23,6 +23,8 @@ import org.kie.server.services.impl.KieContainerInstanceImpl;
 import org.kie.server.services.impl.KieServerImpl;
 import org.kie.server.services.impl.KieServerLocator;
 import org.kie.server.thrift.protocol.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -36,6 +38,9 @@ public class CommandResource {
 
     private KieServerImpl kieServer;
     private KieContainerCommandService kieContainerCommandService;
+
+    private static final Logger logger = LoggerFactory.getLogger(CommandResource.class);
+
 
     public CommandResource() {
         // if no server impl is passed as parameter, create one
@@ -81,14 +86,14 @@ public class CommandResource {
         return kieServicesResponse;
     }
 
-
     @GET
     @Path("containers/{id}")
     public KieServicesResponse getContainerInfo(@PathParam("id") String id) {
         KieServicesResponse kieServicesResponse = new KieServicesResponse();
         KieContainerInstanceImpl kieContainerInstance = kieServer.getServerRegistry().getContainer(id);
         if( kieContainerInstance == null ) {
-            return kieServicesResponse.setResponse(Response.kieServicesException(new KieServicesException("NoContainerException", "No containers deployed")));
+            logger.warn("No container deployed with id '{}'", id);
+            return kieServicesResponse.setResponse(Response.kieServicesException(new KieServicesException("NoContainerException", id + " container not deployed")));
         } else {
             ContainerInfo containerInfo = new ContainerInfo();
             containerInfo.setContainerId(kieContainerInstance.getContainerId());
