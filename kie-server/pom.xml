@@ -215,8 +215,8 @@
                     <version>8.2.1.Final</version>
                     <hostname>localhost</hostname>
                     <port>9990</port>
-                    <username>x3.admin</username>
-                    <password>x3.access</password>
+                    <username>xxx</username>
+                    <password>xxx</password>
                     <filename>kie-server.war</filename>
                     <!--<artifact>org.kie.server:kie-server:6.4.0.0-SNAPSHOT:war:ee7</artifact>-->
                 </configuration>
