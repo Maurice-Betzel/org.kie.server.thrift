@@ -41,7 +41,7 @@ Very compact binary message payloads with low (de)serialization overhead, result
 
 Object oriented, no schemas or data bindings, less boilerplate code
 
-Automatic Internal Kie Server use of Java Objects like BigDecimal or Date for all Thrift supported languages on none wrapped structs. Wrapped structs can be converted into there Java Type by using the static methods of the converter helper classes.
+Automatic internal Kie Server use of Java Objects like BigDecimal or Date for all Thrift supported languages on none wrapped structs. Wrapped structs can be converted into there Java Type by using the static methods of the converter helper classes.
 
 
 
