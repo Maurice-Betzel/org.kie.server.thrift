@@ -131,9 +131,7 @@ public class FastByteArrayOutputStream extends OutputStream {
     }
 
     /**
-     * Creates a newly allocated byte array. Its size is the current
-     * size of this output stream and the valid contents of the buffer
-     * have been copied into it.
+     * Returns the internal buffer.
      *
      * @return  the current contents of this output stream, as a byte array.
      * @see     java.io.ByteArrayOutputStream#size()

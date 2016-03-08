@@ -11,9 +11,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.kie.server.remote.convert;
+package org.kie.server.thrift.converters;
 
-import org.kie.server.remote.convert.spi.TBaseConverter;
+import org.kie.server.thrift.converters.spi.TBaseConverter;
 
 
 /**
@@ -24,11 +24,19 @@ public class BigDecimalConverter implements TBaseConverter<org.kie.server.thrift
 
     @Override
     public java.math.BigDecimal convertToJava(org.kie.server.thrift.java.BigDecimal bigDecimal) {
-        return new java.math.BigDecimal(bigDecimal.getValue());
+        return BigDecimalConverter.toJava(bigDecimal);
     }
 
     @Override
     public org.kie.server.thrift.java.BigDecimal convertToTBase(java.math.BigDecimal bigDecimal) {
+        return BigDecimalConverter.toTBase(bigDecimal);
+    }
+
+    public static java.math.BigDecimal toJava(org.kie.server.thrift.java.BigDecimal bigDecimal) {
+        return new java.math.BigDecimal(bigDecimal.getValue());
+    }
+
+    public static org.kie.server.thrift.java.BigDecimal toTBase(java.math.BigDecimal bigDecimal) {
         return new org.kie.server.thrift.java.BigDecimal(bigDecimal.toPlainString());
     }
 

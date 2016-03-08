@@ -11,17 +11,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.kie.server.remote.convert.spi;
+package org.kie.server.thrift.converters.spi;
 
 /**
  * Created by mbetzel on 25.02.2016.
- * A class that implements this interface can be used to convert
+ * A class that implements this interface can be used to converters
  * TBase object state into a Java representation and back again.
  *
  * @param <TBase>  the type of the TBase object
- * @param <J>  the type of the Java object
+ * @param <Object>  the type of the Java object
  */
-public interface TBaseConverter<TBase, J> {
+public interface TBaseConverter<TBase, Object> {
 
     /**
      * Converts the value stored in the TBase attribute into the
@@ -30,7 +30,7 @@ public interface TBaseConverter<TBase, J> {
      * @param tBase  the TBase object to be converted
      * @return  the converted Java object
      */
-    public J convertToJava (TBase tBase);
+     Object convertToJava(TBase tBase);
 
     /**
      * Converts the Java object to TBase object.
@@ -38,6 +38,6 @@ public interface TBaseConverter<TBase, J> {
      * @param object  the Java object to be converted
      * @return  the converted TBase object
      */
-    public TBase convertToTBase (J object);
+     TBase convertToTBase (Object object);
 
 }

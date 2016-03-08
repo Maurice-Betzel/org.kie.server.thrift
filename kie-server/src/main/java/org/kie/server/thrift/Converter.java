@@ -11,10 +11,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.kie.server.remote.convert;
+package org.kie.server.thrift;
 
 import org.apache.thrift.*;
-import org.kie.server.remote.convert.spi.TBaseConverter;
+import org.kie.server.thrift.converters.BigDecimalConverter;
+import org.kie.server.thrift.converters.BigIntegerConverter;
+import org.kie.server.thrift.converters.CalendarConverter;
+import org.kie.server.thrift.converters.DateConverter;
+import org.kie.server.thrift.converters.spi.TBaseConverter;
 import org.kie.server.remote.rest.extension.ThriftMessageReader;
 import org.kie.server.thrift.protocol.*;
 
@@ -28,7 +32,7 @@ import java.util.*;
  */
 public class Converter {
 
-    private static final Map<Class,TBaseConverter> dispatch = new HashMap<Class,TBaseConverter>();
+    private static final Map<Class,TBaseConverter> dispatch = new HashMap();
     private static final BigDecimalConverter bigDecimalConverter = new BigDecimalConverter();
     private static final BigIntegerConverter bigIntegerConverter = new BigIntegerConverter();
     private static final CalendarConverter calendarConverter = new CalendarConverter();

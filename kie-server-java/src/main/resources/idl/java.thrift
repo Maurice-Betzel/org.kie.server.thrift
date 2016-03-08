@@ -35,7 +35,7 @@ const string JAVA_MODEL_NAMESPACE = "org.kie.server.thrift.java"
     1: required i32 year;
     2: required i32 month;
     3: required i32 day_of_month;
-    4: optional i32 hour_of_day = 0
-    5: optional i32 minute = 0
-    6: optional i32 second = 0
+    4: required i32 hour_of_day = 0
+    5: required i32 minute = 0
+    6: required i32 second = 0
  }
