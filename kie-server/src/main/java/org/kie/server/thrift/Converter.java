@@ -108,10 +108,11 @@ public class Converter {
     }
 
     public static TBase convertResult(Object result) {
-        if(!(result instanceof TBase)) {
-            result = dispatch.get(result.getClass()).convertToTBase(result);
+        if(result instanceof TBase) {
+            return (TBase) result;
+        } else {
+            return (TBase) dispatch.get(result.getClass()).convertToTBase(result);
         }
-        return (TBase) result;
     }
 
     public static ArrayList<TBase> convertResultArray(Object resultList) {

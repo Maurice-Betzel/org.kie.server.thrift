@@ -14,7 +14,6 @@ limitations under the License.
 package org.kie.server.remote.rest.thrift.drools;
 
 import org.apache.thrift.TBase;
-import org.apache.thrift.TDeserializer;
 import org.apache.thrift.TSerializer;
 import org.drools.core.base.RuleNameEndsWithAgendaFilter;
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
@@ -23,7 +22,6 @@ import org.drools.core.base.RuleNameStartsWithAgendaFilter;
 import org.kie.api.KieServices;
 import org.kie.api.command.Command;
 import org.kie.api.command.KieCommands;
-import org.kie.server.remote.rest.extension.ThriftMessageReader;
 import org.kie.server.remote.rest.extension.ThriftMessageWriter;
 import org.kie.server.services.api.KieServerRegistry;
 import org.kie.server.services.drools.RulesExecutionService;
@@ -67,7 +65,6 @@ public class CommandResource {
     public KieServicesResponse callContainer(@PathParam("id") String containerId, @PathParam("ksessionId") String ksessionId, KieServicesRequest kieServicesRequest) {
         List<Command<?>> commands = new ArrayList();
         BatchExecutionCommand batchExecutionCommand = kieServicesRequest.getBatchExecutionCommand();
-        TDeserializer tDeserializer = ThriftMessageReader.pollTDeserializer();
         TSerializer tSerializer = ThriftMessageWriter.pollTSerializer();
 
         KieContainerInstanceImpl kci = registry.getContainer(containerId);
@@ -167,9 +164,6 @@ public class CommandResource {
             kieServicesResponse.setResponse(Response.kieServicesException(new KieServicesException(e.getClass().getCanonicalName(), e.getMessage())));
             return kieServicesResponse;
         } finally {
-            if (tDeserializer != null) {
-                ThriftMessageReader.addDeserializer(tDeserializer);
-            }
             if (tSerializer != null) {
                 ThriftMessageWriter.addSerializer(tSerializer);
             }
