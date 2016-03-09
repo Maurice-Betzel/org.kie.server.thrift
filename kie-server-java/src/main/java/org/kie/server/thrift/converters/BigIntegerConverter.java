@@ -18,27 +18,27 @@ import org.kie.server.thrift.converters.spi.TBaseConverter;
 /**
  * Created by mbetzel on 25.02.2016.
  */
-public class BigIntegerConverter implements TBaseConverter< org.kie.server.thrift.java.BigInteger, java.math.BigInteger> {
+public class BigIntegerConverter implements TBaseConverter<org.kie.server.thrift.java.BigInteger, java.math.BigInteger> {
 
 
     @Override
-    public java.math.BigInteger convertToJava( org.kie.server.thrift.java.BigInteger bigInteger) {
-        return BigIntegerConverter.toJava(bigInteger);
+    public java.math.BigInteger convertToJava(org.kie.server.thrift.java.BigInteger tBigInteger) {
+        return BigIntegerConverter.toJava(tBigInteger);
     }
 
     @Override
-    public  org.kie.server.thrift.java.BigInteger convertToTBase(java.math.BigInteger bigInteger) {
+    public org.kie.server.thrift.java.BigInteger convertToTBase(java.math.BigInteger bigInteger) {
         return BigIntegerConverter.toTBase(bigInteger);
     }
 
-    public static java.math.BigInteger toJava(org.kie.server.thrift.java.BigInteger bigInteger) {
-        return new java.math.BigInteger(bigInteger.getValue(), bigInteger.getRadix());
+    public static java.math.BigInteger toJava(org.kie.server.thrift.java.BigInteger tBigInteger) {
+        return new java.math.BigInteger(tBigInteger.getValue(), tBigInteger.getRadix());
     }
 
     public static org.kie.server.thrift.java.BigInteger toTBase(java.math.BigInteger bigInteger) {
-        org.kie.server.thrift.java.BigInteger bi = new  org.kie.server.thrift.java.BigInteger();
-        bi.setValue(bigInteger.toString());
-        return bi;
+        org.kie.server.thrift.java.BigInteger tBigInteger = new org.kie.server.thrift.java.BigInteger();
+        tBigInteger.setValue(bigInteger.toString());
+        return tBigInteger;
     }
 
 }

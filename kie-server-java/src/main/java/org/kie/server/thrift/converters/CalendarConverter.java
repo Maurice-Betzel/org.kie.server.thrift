@@ -22,26 +22,26 @@ public class CalendarConverter implements TBaseConverter<org.kie.server.thrift.j
 
 
     @Override
-    public java.util.Calendar convertToJava(org.kie.server.thrift.java.Calendar calendar) {
-        return CalendarConverter.toJava(calendar);
+    public java.util.Calendar convertToJava(org.kie.server.thrift.java.Calendar tCalendar) {
+        return CalendarConverter.toJava(tCalendar);
     }
 
     @Override
     public org.kie.server.thrift.java.Calendar convertToTBase(java.util.Calendar calendar) {
-       return CalendarConverter.toTBase(calendar);
+        return CalendarConverter.toTBase(calendar);
     }
 
-    public static java.util.Calendar toJava(org.kie.server.thrift.java.Calendar calendar) {
-        java.util.Calendar c = java.util.Calendar.getInstance();
-        c.set(calendar.getYear(), calendar.getMonth(), calendar.day_of_month, calendar.getHour_of_day(), calendar.getMinute(), calendar.getSecond());
-        return c;
+    public static java.util.Calendar toJava(org.kie.server.thrift.java.Calendar tCalendar) {
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.set(tCalendar.getYear(), tCalendar.getMonth(), tCalendar.day_of_month, tCalendar.getHour_of_day(), tCalendar.getMinute(), tCalendar.getSecond());
+        return calendar;
     }
 
     public static org.kie.server.thrift.java.Calendar toTBase(java.util.Calendar calendar) {
-        org.kie.server.thrift.java.Calendar c = new org.kie.server.thrift.java.Calendar(calendar.get(java.util.Calendar.YEAR),
+        org.kie.server.thrift.java.Calendar tCalendar = new org.kie.server.thrift.java.Calendar(calendar.get(java.util.Calendar.YEAR),
                 calendar.get(java.util.Calendar.MONTH), calendar.get(java.util.Calendar.DAY_OF_MONTH), calendar.get(java.util.Calendar.HOUR_OF_DAY),
                 calendar.get(java.util.Calendar.MINUTE), calendar.get(java.util.Calendar.SECOND));
-        return c;
+        return tCalendar;
     }
 
 }

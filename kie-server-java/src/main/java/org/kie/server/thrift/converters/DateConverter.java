@@ -22,8 +22,8 @@ public class DateConverter implements TBaseConverter<org.kie.server.thrift.java.
 
 
     @Override
-    public java.util.Date convertToJava(org.kie.server.thrift.java.Date date) {
-        return DateConverter.toJava(date);
+    public java.util.Date convertToJava(org.kie.server.thrift.java.Date tDate) {
+        return DateConverter.toJava(tDate);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class DateConverter implements TBaseConverter<org.kie.server.thrift.java.
         return DateConverter.toTBase(date);
     }
 
-    public static java.util.Date toJava(org.kie.server.thrift.java.Date date) {
-        return new java.util.Date(date.getValue());
+    public static java.util.Date toJava(org.kie.server.thrift.java.Date tDate) {
+        return new java.util.Date(tDate.getValue());
     }
 
     public static org.kie.server.thrift.java.Date toTBase(java.util.Date date) {

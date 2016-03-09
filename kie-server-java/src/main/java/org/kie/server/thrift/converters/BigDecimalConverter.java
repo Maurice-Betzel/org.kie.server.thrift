@@ -23,8 +23,8 @@ public class BigDecimalConverter implements TBaseConverter<org.kie.server.thrift
 
 
     @Override
-    public java.math.BigDecimal convertToJava(org.kie.server.thrift.java.BigDecimal bigDecimal) {
-        return BigDecimalConverter.toJava(bigDecimal);
+    public java.math.BigDecimal convertToJava(org.kie.server.thrift.java.BigDecimal tBigDecimal) {
+        return BigDecimalConverter.toJava(tBigDecimal);
     }
 
     @Override
@@ -32,8 +32,8 @@ public class BigDecimalConverter implements TBaseConverter<org.kie.server.thrift
         return BigDecimalConverter.toTBase(bigDecimal);
     }
 
-    public static java.math.BigDecimal toJava(org.kie.server.thrift.java.BigDecimal bigDecimal) {
-        return new java.math.BigDecimal(bigDecimal.getValue());
+    public static java.math.BigDecimal toJava(org.kie.server.thrift.java.BigDecimal tBigDecimal) {
+        return new java.math.BigDecimal(tBigDecimal.getValue());
     }
 
     public static org.kie.server.thrift.java.BigDecimal toTBase(java.math.BigDecimal bigDecimal) {
