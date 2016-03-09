@@ -63,15 +63,14 @@ public class CommandResource {
     @POST
     @Path("/{ksessionId}")
     public KieServicesResponse callContainer(@PathParam("id") String containerId, @PathParam("ksessionId") String ksessionId, KieServicesRequest kieServicesRequest) {
-        List<Command<?>> commands = new ArrayList();
-        BatchExecutionCommand batchExecutionCommand = kieServicesRequest.getBatchExecutionCommand();
-        TSerializer tSerializer = ThriftMessageWriter.pollTSerializer();
-
         KieContainerInstanceImpl kci = registry.getContainer(containerId);
         if(kci == null) {
             logger.warn("No container deployed with id '{}'", containerId);
             return new KieServicesResponse().setResponse(Response.kieServicesException((new KieServicesException("UnknownContainerException","Unknown container: " + containerId))));
         }
+        List<Command<?>> commands = new ArrayList();
+        BatchExecutionCommand batchExecutionCommand = kieServicesRequest.getBatchExecutionCommand();
+        TSerializer tSerializer = ThriftMessageWriter.pollTSerializer();
         ClassLoader kieContainerClassLoader = kci.getKieContainer().getClassLoader();
         try {
             if (batchExecutionCommand.isSetInsertObjectCommands()) {
