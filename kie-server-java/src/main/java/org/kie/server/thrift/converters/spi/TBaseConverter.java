@@ -15,7 +15,7 @@ package org.kie.server.thrift.converters.spi;
 
 /**
  * Created by mbetzel on 25.02.2016.
- * A class that implements this interface can be used to converters
+ * A class that implements this interface can be used to convert
  * TBase object state into a Java representation and back again.
  *
  * @param <TBase>  the type of the TBase object
