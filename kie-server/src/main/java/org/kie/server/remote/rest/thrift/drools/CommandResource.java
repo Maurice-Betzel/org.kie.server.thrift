@@ -75,7 +75,7 @@ public class CommandResource {
         try {
             if (batchExecutionCommand.isSetInsertObjectCommands()) {
                 for (InsertObjectCommand insertObjectCommand : batchExecutionCommand.getInsertObjectCommands()) {
-                    Object object = Converter.ConvertCommandPayLoad(insertObjectCommand, kieContainerClassLoader);
+                    Object object = Converter.convertCommandPayLoad(insertObjectCommand, kieContainerClassLoader);
                     org.drools.core.command.runtime.rule.InsertObjectCommand command = (org.drools.core.command.runtime.rule.InsertObjectCommand) commandsFactory.newInsert(object);
                     command.setReturnObject(insertObjectCommand.isReturnObject());
                     command.setEntryPoint(insertObjectCommand.getEntryPoiny());
@@ -87,7 +87,7 @@ public class CommandResource {
             }
             if (batchExecutionCommand.isSetInsertElementsCommands()) {
                 for (InsertElementsCommand insertElementsCommand : batchExecutionCommand.getInsertElementsCommands()) {
-                    List<Object> objects = Converter.ConvertCommandPayLoad(insertElementsCommand, kieContainerClassLoader);
+                    List<Object> objects = Converter.convertCommandPayLoad(insertElementsCommand, kieContainerClassLoader);
                     org.drools.core.command.runtime.rule.InsertElementsCommand command = (org.drools.core.command.runtime.rule.InsertElementsCommand) commandsFactory.newInsertElements(objects);
                     command.setReturnObject(insertElementsCommand.isReturnObject());
                     command.setEntryPoint(insertElementsCommand.getEntryPoiny());
@@ -99,7 +99,7 @@ public class CommandResource {
             }
             if (batchExecutionCommand.isSetSetGlobalCommands()) {
                 for (SetGlobalCommand setGlobalCommand : batchExecutionCommand.getSetGlobalCommands()) {
-                    Object object = Converter.ConvertCommandPayLoad(setGlobalCommand, kieContainerClassLoader);
+                    Object object = Converter.convertCommandPayLoad(setGlobalCommand, kieContainerClassLoader);
                     org.drools.core.command.runtime.SetGlobalCommand command = (org.drools.core.command.runtime.SetGlobalCommand) commandsFactory.newSetGlobal(setGlobalCommand.getIdentifier(), object);
                     if (setGlobalCommand.isSetOutIdentifier()) {
                         command.setOutIdentifier(setGlobalCommand.outIdentifier);

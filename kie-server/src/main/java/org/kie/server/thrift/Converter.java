@@ -50,7 +50,7 @@ public class Converter {
         dispatch.put(java.util.Date.class, dateConverter);
     }
 
-    public static Object ConvertCommandPayLoad(InsertObjectCommand insertObjectCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
+    public static Object convertCommandPayLoad(InsertObjectCommand insertObjectCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
         if (insertObjectCommand.getClassCanonicalName().startsWith(JAVA_MODEL_NAMESPACE)) {
             return deserializeToJava(insertObjectCommand.getObject(), insertObjectCommand.getClassCanonicalName(), kieContainerClassLoader);
         } else {
@@ -58,7 +58,7 @@ public class Converter {
         }
     }
 
-    public static Object ConvertCommandPayLoad(SetGlobalCommand setGlobalCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
+    public static Object convertCommandPayLoad(SetGlobalCommand setGlobalCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
         if (setGlobalCommand.getClassCanonicalName().startsWith(JAVA_MODEL_NAMESPACE)) {
             return deserializeToJava(setGlobalCommand.getObject(), setGlobalCommand.getClassCanonicalName(), kieContainerClassLoader);
         } else {
@@ -66,7 +66,7 @@ public class Converter {
         }
     }
 
-    public static ArrayList<Object> ConvertCommandPayLoad(InsertElementsCommand insertElementsCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
+    public static ArrayList<Object> convertCommandPayLoad(InsertElementsCommand insertElementsCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
         ArrayList<Object> instances = new ArrayList<>(insertElementsCommand.getObjects().size());
         if (insertElementsCommand.getClassCanonicalName().startsWith(JAVA_MODEL_NAMESPACE)) {
             for (ByteBuffer byteBuffer : insertElementsCommand.getObjects()) {
