@@ -32,7 +32,7 @@ Maven 3.0.5
 
 Modified Thrift maven plugin / Thrift compiler 0.9.2
 
-Tested on JavaEE7 with Wildfly 8.2.1 using Kie Server 6.4.0.Beta2
+Tested on JavaEE7 with Wildfly 8.2.1 using Kie Server 6.4.0.CR1
 
 
 Features
