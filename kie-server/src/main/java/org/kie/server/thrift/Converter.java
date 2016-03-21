@@ -32,7 +32,8 @@ import java.util.*;
  */
 public class Converter {
 
-    private static final Map<Class,TBaseConverter> dispatch = new HashMap();
+    private static final Map<Class,TBaseConverter> thriftDispatch = new HashMap();
+    private static final Map<Class,TBaseConverter> javaDispatch = new HashMap();
     private static final BigDecimalConverter bigDecimalConverter = new BigDecimalConverter();
     private static final BigIntegerConverter bigIntegerConverter = new BigIntegerConverter();
     private static final CalendarConverter calendarConverter = new CalendarConverter();
@@ -40,14 +41,14 @@ public class Converter {
 
 
     static {
-        dispatch.put(org.kie.server.thrift.java.BigDecimal.class, bigDecimalConverter);
-        dispatch.put(org.kie.server.thrift.java.BigInteger.class, bigIntegerConverter);
-        dispatch.put(org.kie.server.thrift.java.Calendar.class, calendarConverter);
-        dispatch.put(org.kie.server.thrift.java.Date.class, dateConverter);
-        dispatch.put(java.math.BigDecimal.class, bigDecimalConverter);
-        dispatch.put(java.math.BigInteger.class, bigIntegerConverter);
-        dispatch.put(java.util.Calendar.class, calendarConverter);
-        dispatch.put(java.util.Date.class, dateConverter);
+        thriftDispatch.put(org.kie.server.thrift.java.BigDecimal.class, bigDecimalConverter);
+        thriftDispatch.put(org.kie.server.thrift.java.BigInteger.class, bigIntegerConverter);
+        thriftDispatch.put(org.kie.server.thrift.java.Calendar.class, calendarConverter);
+        thriftDispatch.put(org.kie.server.thrift.java.Date.class, dateConverter);
+        javaDispatch.put(java.math.BigDecimal.class, bigDecimalConverter);
+        javaDispatch.put(java.math.BigInteger.class, bigIntegerConverter);
+        javaDispatch.put(java.util.Calendar.class, calendarConverter);
+        javaDispatch.put(java.util.Date.class, dateConverter);
     }
 
     public static Object convertCommandPayLoad(InsertObjectCommand insertObjectCommand, ClassLoader kieContainerClassLoader) throws ClassNotFoundException, TException, InstantiationException, IllegalAccessException {
@@ -86,7 +87,7 @@ public class Converter {
         try {
             TBase tBase = (TBase) classLoader.loadClass(classCanonicalName).newInstance();
             tDeserializer.deserialize(tBase, bytes);
-            return dispatch.get(tBase.getClass()).convertToJava(tBase);
+            return thriftDispatch.get(tBase.getClass()).convertToJava(tBase);
         } finally {
             if (tDeserializer != null) {
                 ThriftMessageReader.addDeserializer(tDeserializer);
@@ -111,7 +112,7 @@ public class Converter {
         if(result instanceof TBase) {
             return (TBase) result;
         } else {
-            return (TBase) dispatch.get(result.getClass()).convertToTBase(result);
+            return (TBase) javaDispatch.get(result.getClass()).convertToTBase(result);
         }
     }
 
