@@ -24,7 +24,7 @@
 
     <groupId>org.kie.server</groupId>
     <artifactId>kie-server-reactor</artifactId>
-    <version>6.4.0.0.CR1</version>
+    <version>6.4.0.0.Final</version>
     <packaging>pom</packaging>
 
     <name>KIE :: Execution Server :: Reactor</name>
@@ -58,7 +58,7 @@
         <libthrift-bundle.version>0.9.2_1</libthrift-bundle.version>
         <resteasy.version>2.3.10.Final</resteasy.version>
         <libthrift.version>0.9.2</libthrift.version>
-        <kie.version>6.4.0.CR1</kie.version>
+        <kie.version>6.4.0.Final</kie.version>
         <slf4j.version>1.7.2</slf4j.version>
         <jdk.version>1.7</jdk.version>
         <jdk.target>1.7</jdk.target>
